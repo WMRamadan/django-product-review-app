@@ -1,0 +1,144 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+  <main class="mt-5 pt-4">
+    <div class="container dark-grey-text mt-5">
+
+      <!--Grid row-->
+      <div class="row wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          <img src="{{ product.image.url }}" class="img-fluid" alt="">
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          <!--Content-->
+          <div class="p-4">
+
+            <div class="mb-3">
+              <a href="">
+                <span class="badge purple mr-1">{{ product.category }}</span>
+              </a>
+            </div>
+
+            <p class="lead">
+              <span>{{ product.name }}</span>
+            </p>
+
+            <p class="lead font-weight-bold">Description</p>
+
+            <p>{{ product.description }}</p>
+
+          </div>
+          <!--Content-->
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+      <hr>
+
+      <!--Grid row-->
+      <div class="row d-flex justify-content-center wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-6 text-center">
+
+          <h4 class="my-4 h4">Product Reviews</h4>
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+      <!--Grid row-->
+      {% if request.user.is_authenticated %}
+      <div class="row d-flex justify-content-center wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-6 text-center">
+
+          <h4 class="my-4 h4">Welcome {{ request.user.username}}, please leave a your review</h4>
+
+          <form action="{% url 'add_review' product.slug %}" method="post">
+            {% csrf_token %}
+            <div>
+              <label for="{{ form.rating.id_for_label }}">Rating:</label>
+              {{ form.rating }}
+            </div>
+            <div>
+              <label for="{{ form.content.id_for_label }}">Review:</label>
+              {{ form.content }}
+            </div>
+            <input type="submit" value="Add" />
+          </form>
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      {% endif %}
+      <!--Grid row-->
+
+      <!--Grid row-->
+      <div class="row wow fadeIn">
+
+        <!--Section: Products v.3-->
+      <section class="text-center mb-4">
+
+        <div class="row wow fadeIn">
+
+          {% for review in reviews %}
+          <div class="col-lg-3 col-md-6 mb-4">
+
+            <div class="card">
+
+              <div class="view overlay">
+                <img src="{{ product.image.url }}" class="card-img-top">
+                <a href="{{ product.get_absolute_url }}">
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+
+              <div class="card-body text-center">
+                <a href="" class="grey-text">
+                  <h5>{{ review.content }}</h5>
+                </a>
+                <h5>
+                  <strong>
+                   Reviewed by: {{ review.author }}
+                  </strong>
+                </h5>
+                <h6 class="font-weight-bold blue-text">
+                  <strong>Rating: {{ review.rating }}
+                  </strong>
+                </h6>
+
+              </div>
+
+            </div>
+
+          </div>
+          {% endfor %}
+        </div>
+
+      </section>
+      <!--Section: Products v.3-->
+
+      </div>
+      <!--Grid row-->
+
+    </div>
+  </main>
+
+{% endblock content %}

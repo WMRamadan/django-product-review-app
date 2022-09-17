@@ -5,18 +5,18 @@ This application houses a list of products that can be reviewed by users. An adm
 ## Requirements
 
 - python 3.8.1
-- django 3.0.3
-- sqlite 3.24.0
+- pip
+- conda
 
 ## Setup
 
-Navigate to project folder and run the following to start the virtual environment:
+Navigate to project folder and run the following to install the requirements:
 
-    source bin/activate
+    conda env create -f environment.yaml
 
-Inside the project folder run the following command to install all requirements:
+Inside the project folder run the following command to activate the environment:
 
-    pip3 install -r requirements.txt
+    conda activate django-product-review-app
 
 Navigate to the src/ folder inside the project folder and run the following command:
 

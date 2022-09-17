@@ -28,4 +28,4 @@
 # ``shelve``, ``marshal``, ``anydbm``, & ``bsddb``
 # (among others).
 src/* linguist-language=python
-src/static/* linguist-vendored
+src/static/js/* linguist-language=javascript

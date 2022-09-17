@@ -16,9 +16,8 @@ Inside the project folder run the following command to activate the environment:
 
     conda activate django-product-review-app
 
-Navigate to the src/ folder inside the project folder and run the following command:
+Navigate to the src/ folder inside the project folder and run the following command for creating all database migrations:
 
-    python3 manage.py makemigrations
     python3 manage.py migrate
 
 Create your super user account with the following command inside the src/ directory:

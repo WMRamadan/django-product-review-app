@@ -1,1 +1,2 @@
 src/* linguist-language=python
+src/static/* linguist-vendored

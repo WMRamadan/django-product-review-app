@@ -2,7 +2,7 @@ asgiref
 certifi
 chardet
 defusedxml
-Django==3.1.10
+Django==3.1.14
 django-allauth
 django-autoslug
 idna

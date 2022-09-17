@@ -30,6 +30,10 @@ Run all tests with the follwing command inside the src/ directory:
 
     python3 manage.py test
 
+To run a test for a specific module using the following command inside the src/ directory and replace `<module_name>` with the module you want to run the test for such as `products`:
+
+    python3 manage.py test <module_name>
+
 ## Launch App
 
 Run the Python dev server with the following command inside the src/ directory:

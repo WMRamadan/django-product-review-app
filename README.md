@@ -24,6 +24,10 @@ Create your super user account with the following command inside the src/ direct
 
     python3 manage.py createsuperuser
 
+Run all tests with the follwing command inside the src/ directory:
+
+    python3 manage.py test
+
 Run the Python dev server with the following command inside the src/ directory:
 
     python3 manage.py runserver

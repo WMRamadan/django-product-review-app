@@ -4,9 +4,7 @@ This application houses a list of products that can be reviewed by users. An adm
 
 ## Requirements
 
-- python 3.8.1
-- pip
-- conda
+- conda 4.12.0
 
 ## Setup
 

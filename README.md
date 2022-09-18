@@ -6,7 +6,11 @@ This application houses a list of products that can be reviewed by users. An adm
 
 - conda 4.12.0
 
-## Setup
+## Local Instructions
+
+The following instruction are for setting up and running the app locally.
+
+### Setup
 
 Navigate to project folder and run the following to install the requirements:
 
@@ -24,7 +28,7 @@ Create your super user account with the following command inside the src/ direct
 
     python3 manage.py createsuperuser
 
-## Tests
+### Tests
 
 Run all tests with the follwing command inside the src/ directory:
 
@@ -34,8 +38,22 @@ To run a test for a specific module use the following command inside the src/ di
 
     python3 manage.py test <module_name>
 
-## Launch App
+### Launch App
 
 Run the Python dev server with the following command inside the src/ directory:
 
     python3 manage.py runserver
+
+## Docker Instructions
+
+The following instructions are for setting up and running the app using docker.
+
+## Setup & Build
+
+Build the docker container with the following instuctions, the container will need to be rebuilt with every code change:
+
+    docker-compose build
+
+## Launch App
+
+    docker-compose up

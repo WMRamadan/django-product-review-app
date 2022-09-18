@@ -1,4 +1,3 @@
-from unicodedata import category
 from django.test import TestCase
 from products.models import Category, Product
 

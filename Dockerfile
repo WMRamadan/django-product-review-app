@@ -11,6 +11,6 @@ EXPOSE 8000
 ENTRYPOINT ["/bin/bash", "-c", "conda init bash \
 && source /root/.bashrc \
 && conda activate django-product-review-app \
-&& python3 src/manage.py migrate \
-&& python3 src/manage.py createsuperuser --no-input \
-&& python3 src/manage.py runserver 0.0.0.0:8000"]
+&& python3 manage.py migrate \
+&& python3 manage.py createsuperuser --no-input || true \
+&& python3 manage.py runserver 0.0.0.0:8000"]

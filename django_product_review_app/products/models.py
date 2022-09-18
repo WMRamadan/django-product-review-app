@@ -5,22 +5,50 @@ from django.shortcuts import reverse
 from autoslug import AutoSlugField
 from django_product_review_app import utils
 
+
 class Category(models.Model):
 	name = models.CharField(max_length=120)
 
 	def __str__(self):
 		return self.name
 
+	def save(self, *args, **kwargs):
+		if self.pk is None:
+			old_instance = Category.objects.filter(name__iexact=self.name)
+			if old_instance:
+				existing_model = old_instance.first()
+				existing_model.is_deleted = False
+				existing_model.name = self.name
+				existing_model.save()
+			else:
+				super(Category, self).save(*args, **kwargs)
+		else:
+			super(Category, self).save(*args, **kwargs)
+
+
 class Product(models.Model):
 	name = models.CharField(max_length=120)
 	description = models.TextField()
-	image = models.FileField(upload_to=utils.generate_unique_name('images/'), validators=[FileExtensionValidator(allowed_extensions=['jpg', 'png'])])
+	image = models.FileField(upload_to=utils.generate_unique_name, validators=[FileExtensionValidator(allowed_extensions=['jpg', 'png'])])
 	category = models.ForeignKey(Category, on_delete=models.CASCADE)
 	created_date = models.DateField(auto_now_add=True)
 	slug = AutoSlugField(populate_from='name', unique_with='created_date')
 
 	def __str__(self):
 		return self.name
+
+	def save(self, *args, **kwargs):
+		if self.pk is None:
+			old_instance = Product.objects.filter(name__iexact=self.name)
+			if old_instance:
+				existing_model = old_instance.first()
+				existing_model.is_deleted = False
+				existing_model.name = self.name
+				existing_model.save()
+			else:
+				super(Product, self).save(*args, **kwargs)
+		else:
+			super(Product, self).save(*args, **kwargs)
 
 	def get_absolute_url(self):
 		return reverse("product", kwargs={'slug': self.slug})

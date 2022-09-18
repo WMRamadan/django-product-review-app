@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.conf import settings
 from django.urls import path, include
-from products.views import home_view, product_detail_view, add_review
+from django_product_review_app.products.views import home_view, product_detail_view, add_review
 from django.conf.urls.static import static
 
 urlpatterns = [

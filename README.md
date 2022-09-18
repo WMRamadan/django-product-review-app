@@ -5,6 +5,8 @@ This application houses a list of products that can be reviewed by users. An adm
 ## Requirements
 
 - conda 4.12.0
+- docker
+- docker-compose
 
 ## Local Instructions
 

@@ -50,12 +50,12 @@ Run the Python dev server with the following command inside the src/ directory:
 
 The following instructions are for setting up and running the app using docker.
 
-## Docker Build
+### Docker Build
 
 Build the docker container with the following instuctions, the container will need to be rebuilt with every code change:
 
     docker-compose build
 
-## Launch App
+### Launch App
 
     docker-compose up

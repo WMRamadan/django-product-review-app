@@ -8,11 +8,11 @@ This application houses a list of products that can be reviewed by users. An adm
 - docker
 - docker-compose
 
-## Local Instructions
+## Local Setup Instructions
 
 The following instruction are for setting up and running the app locally.
 
-### Setup
+### Environment Setup
 
 Navigate to project folder and run the following to install the requirements:
 
@@ -46,11 +46,11 @@ Run the Python dev server with the following command inside the src/ directory:
 
     python3 manage.py runserver
 
-## Docker Instructions
+## Docker Setup Instructions
 
 The following instructions are for setting up and running the app using docker.
 
-## Setup & Build
+## Docker Build
 
 Build the docker container with the following instuctions, the container will need to be rebuilt with every code change:
 

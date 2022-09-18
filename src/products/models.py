@@ -3,6 +3,7 @@ from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator, FileExtensionValidator
 from django.shortcuts import reverse
 from autoslug import AutoSlugField
+from django_product_review_app import utils
 
 class Category(models.Model):
 	name = models.CharField(max_length=120)
@@ -13,7 +14,7 @@ class Category(models.Model):
 class Product(models.Model):
 	name = models.CharField(max_length=120)
 	description = models.TextField()
-	image = models.FileField(upload_to='images/', validators=[FileExtensionValidator(allowed_extensions=['jpg', 'png'])])
+	image = models.FileField(upload_to=utils.generate_unique_name('images/'), validators=[FileExtensionValidator(allowed_extensions=['jpg', 'png'])])
 	category = models.ForeignKey(Category, on_delete=models.CASCADE)
 	created_date = models.DateField(auto_now_add=True)
 	slug = AutoSlugField(populate_from='name', unique_with='created_date')
@@ -23,6 +24,7 @@ class Product(models.Model):
 
 	def get_absolute_url(self):
 		return reverse("product", kwargs={'slug': self.slug})
+
 
 class Review(models.Model):
 	RATING_CHOICES = (
